@@ -1,0 +1,434 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming 1 with Ms. B</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ecf0f1;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .classroom {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="%2334495e"/><rect x="50" y="50" width="700" height="400" fill="%23ecf0f1"/><rect x="100" y="100" width="600" height="300" fill="%232c3e50"/></svg>');
+            background-size: cover;
+        }
+
+        .dialogue-box {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background-color: rgba(52, 73, 94, 0.9);
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-text {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .choice-btn {
+            background-color: #2980b9;
+            color: #ecf0f1;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: left;
+        }
+
+        .choice-btn:hover {
+            background-color: #3498db;
+        }
+
+        .project-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #333;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+            display: none;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .project-content {
+            font-family: monospace;
+            white-space: pre;
+            text-align: center;
+        }
+
+        .next-btn {
+            background-color: #27ae60;
+            color: #ecf0f1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .next-btn:hover {
+            background-color: #2ecc71;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="classroom"></div>
+        <div class="dialogue-box">
+            <div class="speaker" id="speaker">Ms. B</div>
+            <div class="dialogue-text" id="dialogue-text">Welcome to Python Programming 1! Today we'll be showcasing everyone's final projects. I hope you're all excited to see what your classmates have been working on.</div>
+            <div class="choices" id="choices">
+                <button class="next-btn" onclick="nextDialogue()">Next</button>
+            </div>
+        </div>
+        <div class="project-display" id="project-display">
+            <div class="project-title" id="project-title"></div>
+            <div class="project-content" id="project-content"></div>
+            <button class="next-btn" onclick="closeProject()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const dialogues = [
+            {
+                speaker: "Ms. B",
+                text: "Welcome to Python Programming 1! Today we'll be showcasing everyone's final projects. I hope you're all excited to see what your classmates have been working on.",
+                choices: []
+            },
+            {
+                speaker: "Ms. B",
+                text: "I'm so proud of all of you. You've come so far since the beginning of the semester when some of you couldn't even define a variable!",
+                choices: []
+            },
+            {
+                speaker: "Ms. B",
+                text: "Let's start with Emma's project. Emma, would you like to introduce your work?",
+                choices: []
+            },
+            {
+                speaker: "Emma",
+                text: "Thanks, Ms. B! I created a text-based adventure game using Python. It has multiple endings and keeps track of inventory items.",
+                choices: []
+            },
+            {
+                speaker: "Emma",
+                text: "Would you like to see my project?",
+                choices: [
+                    { text: "Yes, I'd love to see it", nextIndex: 5 },
+                    { text: "No thanks", nextIndex: 6 }
+                ]
+            },
+            {
+                speaker: "Emma",
+                text: "Great! Here's my text adventure game.",
+                project: {
+                    title: "Emma's Python Adventure Game",
+                    content: `
+# Adventure Game by Emma
+def start_game():
+    inventory = []
+    print("Welcome to the Forest of Mysteries!")
+    print("You find yourself at a fork in the path.")
+    print("Do you go LEFT or RIGHT?")
+    
+    choice = input("> ").lower()
+    if choice == "left":
+        forest_clearing(inventory)
+    elif choice == "right":
+        dark_cave(inventory)
+    else:
+        print("Invalid choice. Try again.")
+        start_game()
+
+def forest_clearing(inventory):
+    print("\\nYou enter a peaceful clearing.")
+    print("You see a SHINY OBJECT on the ground.")
+    print("Do you PICK IT UP or LEAVE IT?")
+    
+    choice = input("> ").lower()
+    if choice == "pick it up":
+        print("You found a magic key!")
+        inventory.append("magic key")
+        print(f"Inventory: {inventory}")
+        continue_journey(inventory)
+    elif choice == "leave it":
+        continue_journey(inventory)
+    else:
+        print("Invalid choice. Try again.")
+        forest_clearing(inventory)
+
+def dark_cave(inventory):
+    print("\\nYou enter a dark cave...")
+    # More game code here
+
+print("=== ADVENTURE GAME ===")
+start_game()
+`
+                },
+                choices: []
+            },
+            {
+                speaker: "Emma",
+                text: "Oh, you don't want to see it? Well, I worked really hard on this...",
+                choices: []
+            },
+            {
+                speaker: "Emma",
+                text: "I'm going to show you anyway! It's really cool!",
+                project: {
+                    title: "Emma's Python Adventure Game",
+                    content: `
+# Adventure Game by Emma
+def start_game():
+    inventory = []
+    print("Welcome to the Forest of Mysteries!")
+    print("You find yourself at a fork in the path.")
+    print("Do you go LEFT or RIGHT?")
+    
+    choice = input("> ").lower()
+    if choice == "left":
+        forest_clearing(inventory)
+    elif choice == "right":
+        dark_cave(inventory)
+    else:
+        print("Invalid choice. Try again.")
+        start_game()
+
+def forest_clearing(inventory):
+    print("\\nYou enter a peaceful clearing.")
+    print("You see a SHINY OBJECT on the ground.")
+    print("Do you PICK IT UP or LEAVE IT?")
+    
+    choice = input("> ").lower()
+    if choice == "pick it up":
+        print("You found a magic key!")
+        inventory.append("magic key")
+        print(f"Inventory: {inventory}")
+        continue_journey(inventory)
+    elif choice == "leave it":
+        continue_journey(inventory)
+    else:
+        print("Invalid choice. Try again.")
+        forest_clearing(inventory)
+
+def dark_cave(inventory):
+    print("\\nYou enter a dark cave...")
+    # More game code here
+
+print("=== ADVENTURE GAME ===")
+start_game()
+`
+                },
+                choices: []
+            },
+            {
+                speaker: "Ms. B",
+                text: "Thank you, Emma! That was an excellent demonstration of using functions and conditional statements.",
+                choices: []
+            },
+            {
+                speaker: "Ms. B",
+                text: "Next up, we have Jessica with her ASCII art generator.",
+                choices: []
+            },
+            {
+                speaker: "Jessica",
+                text: "Hi everyone! For my project, I created a Python program that generates ASCII art. I'm really passionate about reproductive health education, so I made something educational.",
+                choices: []
+            },
+            {
+                speaker: "Jessica",
+                text: "Would you like to see my project?",
+                choices: [
+                    { text: "Yes, I'd like to see it", nextIndex: 12 },
+                    { text: "No thanks", nextIndex: 13 }
+                ]
+            },
+            {
+                speaker: "Jessica",
+                text: "Cool! Here's my ASCII art generator focused on reproductive health education.",
+                project: {
+                    title: "Jessica's Educational ASCII Art",
+                    content: `
+# ASCII Art Uterus - Educational Project by Jessica
+                     .-""""-.
+                   .'        '.
+                  /            \\
+                 |              |
+                 |,  .-.  .-.  ,|
+                 | )(__/  \\__)( |
+                 |/     /\\     \\|
+       (@_       (_     ^^     _)
+  _     ) \\_______\\__|IIIIII|__/__________________________
+ (_)@8@8{}<________|-\\IIIIII/-|___________________________>
+        )_/        \\          /
+       (@           \`--------\`
+                    
+print("An educational ASCII representation of the female reproductive system")
+print("This program generates anatomical diagrams for educational purposes")
+    `
+                },
+                choices: []
+            },
+            {
+                speaker: "Jessica",
+                text: "You don't want to see it? But it's really educational and important!",
+                choices: []
+            },
+            {
+                speaker: "Jessica",
+                text: "I think everyone should see this. Let me show you anyway!",
+                project: {
+                    title: "Jessica's Educational ASCII Art",
+                    content: `
+# ASCII Art Uterus - Educational Project by Jessica
+                     .-""""-.
+                   .'        '.
+                  /            \\
+                 |              |
+                 |,  .-.  .-.  ,|
+                 | )(__/  \\__)( |
+                 |/     /\\     \\|
+       (@_       (_     ^^     _)
+  _     ) \\_______\\__|IIIIII|__/__________________________
+ (_)@8@8{}<________|-\\IIIIII/-|___________________________>
+        )_/        \\          /
+       (@           \`--------\`
+                    
+print("An educational ASCII representation of the female reproductive system")
+print("This program generates anatomical diagrams for educational purposes")
+    `
+                },
+                choices: []
+            },
+            {
+                speaker: "Ms. B",
+                text: "Thank you, Jessica. That's certainly... educational. It's good to see you applying programming to topics you're passionate about.",
+                choices: []
+            },
+            {
+                speaker: "Ms. B", 
+                text: "Next up is Tyler with his data visualization project...",
+                choices: []
+            },
+            {
+                speaker: "System",
+                text: "End of demo! In the full game, more students would present their Python projects with different interactions and choices.",
+                choices: [
+                    { text: "Restart the game", nextIndex: 0 }
+                ]
+            }
+        ];
+
+        let currentDialogueIndex = 0;
+
+        function displayDialogue(index) {
+            const dialogue = dialogues[index];
+            document.getElementById("speaker").textContent = dialogue.speaker;
+            document.getElementById("dialogue-text").innerHTML = dialogue.text;
+            
+            const choicesDiv = document.getElementById("choices");
+            choicesDiv.innerHTML = "";
+            
+            if (dialogue.choices && dialogue.choices.length > 0) {
+                dialogue.choices.forEach(choice => {
+                    const button = document.createElement("button");
+                    button.className = "choice-btn";
+                    button.textContent = choice.text;
+                    button.onclick = function() {
+                        currentDialogueIndex = choice.nextIndex;
+                        displayDialogue(currentDialogueIndex);
+                    };
+                    choicesDiv.appendChild(button);
+                });
+            } else {
+                const nextButton = document.createElement("button");
+                nextButton.className = "next-btn";
+                nextButton.textContent = "Next";
+                nextButton.onclick = nextDialogue;
+                choicesDiv.appendChild(nextButton);
+            }
+            
+            if (dialogue.project) {
+                showProject(dialogue.project);
+            }
+        }
+
+        function nextDialogue() {
+            currentDialogueIndex++;
+            if (currentDialogueIndex < dialogues.length) {
+                displayDialogue(currentDialogueIndex);
+            }
+        }
+
+        function showProject(project) {
+            document.getElementById("project-title").textContent = project.title;
+            document.getElementById("project-content").textContent = project.content;
+            document.getElementById("project-display").style.display = "block";
+        }
+
+        function closeProject() {
+            document.getElementById("project-display").style.display = "none";
+        }
+
+        // Initialize the game
+        displayDialogue(currentDialogueIndex);
+    </script>
+</body>
+</html>
