@@ -189,27 +189,27 @@
                 text: "Do you want to see my project… its important.",
                 scene: "bee",
                 choices: [
-                    { text: "Uh... okay?", nextIndex: 8 },
-                    { text: "What's with the intense staring? It's kind of creepy.", nextIndex: 6 },
-                    { text: "Pretend not to hear and look at your phone", nextIndex: 7 },
+                    { text: "Uh... okay?", nextIndex: 7 },
+                    { text: "Pretend not to hear and look at your phone", nextIndex: 6 },
                 ]
             },
             {
-                speaker: "Emma",
-                text: "[laughs nervously] Oh sorry, was I staring?",
+                speaker: "Unnamed Student 1",
+                text: "I've been coding for so long, PLEASE look at my project?",
+                scene: "bee",
+                choices: [
+                    { text: "Uh... okay?", nextIndex: 7 },
+                ]
+            },{
+            },
+            {
+                speaker: "you",
+                text: "Uh... okay?",
                 scene: "bee",
                 choices: []
             },
             {
-                speaker: "Emma",
-                text: "I've been coding for so long, PLEASE look at my project?",
-                scene: "bee",
-                choices: [
-                    { text: "Uh... okay?", nextIndex: 8 },
-                ]
-            },
-            {
-                speaker: "Emma",
+                speaker: "Unnamed Student 1",
                 text: "[excited] Okay, so I created something really nice!",
                 scene: "bee",
                 choices: []
@@ -222,7 +222,7 @@
             },
             {
                 speaker: "you",
-                text: " Is that...",
+                text: "Is that...",
                 scene: "bee",
                 choices: []
             },
@@ -231,9 +231,17 @@
                 text: "Because we all come from... anyways, what do you think?",
                 scene: "bee",
                 choices: [
-                    { text: "I'm... not sure how to feel.", nextIndex: 12 },
-                    { text: "That's... certainly creative..", nextIndex: 12 },
+                    { text: "I'm... not sure how to feel.", nextIndex: 13 },
+                    { text: "That's... certainly creative..", nextIndex: 15 },
                 ]
+            },
+            {
+            },
+            {
+                speaker: "you",
+                text: "I'm... not sure how to feel.",
+                scene: "bee",
+                choices: []
             },
             {
                 speaker: "Unnamed Student 1",
@@ -244,6 +252,12 @@
             {
                 speaker: "Unnamed Student 1",
                 text: "Ms. Bee said our projects should \"express our innermost creativity!\"",
+                scene: "bee",
+                choices: []
+            },
+            {
+                speaker: "you",
+                text: "That's... certainly creative..",
                 scene: "bee",
                 choices: []
             },
@@ -273,7 +287,7 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "I grew up as trailor trash in what you might call... \"the hood\".",
+                text: "When I was younger, I grew up as trailor trash in<br>what you might call... \"the hood\".",
                 scene: "kween",
                 choices: []
             },
@@ -288,10 +302,17 @@
                 text: "for his marijuana garden out back.",
                 scene: "kween",
                 choices: [
-                    { text: "What does this have to do with the speech?", nextIndex: 21 },
-                    { text: "So... you grew up in the suburbs?", nextIndex: 26 },
-                    { text: "[say nothing]", nextIndex: 28 }
+                    { text: "What does this have to do with the speech?", nextIndex: 26 },
+                    { text: "So... you grew up in the suburbs?", nextIndex: 33 },
+                    { text: "[say nothing]", nextIndex: 37 }
                 ]
+            },{
+            },
+            {
+                speaker: "you",
+                text: "Uh.. Ms. Kween, What does this have to do with the speech?",
+                scene: "kween",
+                choices: []
             },
             {
                 speaker: "Ms. Kween",
@@ -307,40 +328,40 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "My great-great-grandmother's cousin's nephew's was<br>helped with the Underground Railroad..",
+                text: "and if I was a slave I would be the first to be killed because I wouldn't take the disrespect!",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "none",
+                text: "...",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Ms. Kween",
+                text: "so ain't I a woman too? A black woman at that?'",
                 scene: "kween",
                 choices: [
-                    { text: "Helped with it? or helped keep people from escaping...?", nextIndex: 27 },
-                    { text: "say nothing", nextIndex: 24 }
+                    { text: "Okay...", nextIndex: 36 },
                 ]
+            },{
             },
             {
-                speaker: "Ms. Kween",
-                text: "If I was a slave I would be the first to be killed because I wouldn't take the disrespect!",
+                speaker: "you",
+                text: "So... you grew up in the suburbs?",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "so ain't I a woman too? A black woman at that?' ",
+                text: "[defensive] SUBURBS? I was TRAILOR TRASH<br>Don't invalidate my lived experience!",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "[defensive] SUBURBS? It was URBAN-ADJACENT!",
-                scene: "kween",
-                choices: []
-            },
-            {
-                speaker: "Ms. Kween",
-                text: "We had a COMMUNITY GARDEN! I once saw someone SHOPLIFTING at the Whole Foods! Don't invalidate my lived experience!",
-                scene: "kween",
-                choices: []
-            },
-            {
-                speaker: "Ms. Kween",
-                text: "All my neighbors were people of color. My best friends. My community. My PEOPLE.",
+                text: "I was the only white girls around... There were only people of color.<br>My best friends. My community. My <strong>NEIGHBORS.</strong>",
                 scene: "kween",
                 choices: []
             },
@@ -351,8 +372,20 @@
                 choices: []
             },
             {
+                speaker: "you",
+                text: "Okay...",
+                scene: "kween",
+                choices: []
+            },
+            {
                 speaker: "Ms. Kween",
                 text: "[sighs dramatically] Sometimes I think I was born in the wrong body. The wrong time. The wrong... pigmentation.",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Ms. Kween",
+                text: "I may not be Black. But inside? I feel it. Deeply...<br>I am a black woman at heart.",
                 scene: "kween",
                 choices: []
             },
@@ -363,28 +396,58 @@
                 choices: []
             },
             {
-                speaker: "Ms. Kween",
-                text: "I may not be Black. But inside? I feel it. Deeply. I am a black woman at heart.",
+                speaker: "Unnamed Student 3",
+                text: "Ms. Kween, its 10:25 am...",
                 scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Ms. Kween",
+                text: "Oh... Well class is dismissed.<br>Have a good lunch everyone!",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "Hey you.. lets go to the vending machine, I'm kinda hungry.",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "you",
+                text: "Alright..",
+                scene: "bee",
                 choices: []
             },
             
             // Scene 3: VENDING MACHINE INCIDENT
             {
-                speaker: "none",
-                text: "[Hallway with friends. You notice a vending machine with its door slightly ajar.]",
-                scene: "vending",
+                speaker: "you",
+                text: "[Thinking] We didn't even get to hear the speach..",
+                scene: "bee",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 1",
-                text: "[eyes widening] Dude, check it out! The vending machine is open! Someone must have been refilling it.",
+                speaker: "Unnamed Student 2",
+                text: "Class was so strange today.. What was Ms.Kween on?",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 3",
+                text: "Probably her dad's marijuana LOL... Dude, check it out! [eyes widening]<br>The vending machine is open!",
                 scene: "vending",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
-                text: "[rushing over] No way! Free snacks! It's like Christmas but with more high fructose corn syrup!",
+                text: "[rushing over] No way! Someone must have been refilling it.. Lets grab something!",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "Yeah! I'm going to take a thing or two. They won't notice..",
                 scene: "vending",
                 choices: []
             },
@@ -395,25 +458,29 @@
                 choices: []
             },
             {
-                speaker: "Unnamed Student 1",
-                text: "[nudging player] What do you think? Five-finger discount? The school charges us $2 for a candy bar that costs 75 cents at the gas station. It's basically justice.",
+                speaker: "Unnamed Student 2",
+                text: "[nudging player] What do you think?",
                 scene: "vending",
                 choices: [
                     { text: "Let's take some snacks! The school's been robbing us for years!", nextIndex: 36 },
                     { text: "I don't think we should steal... we could get in serious trouble.", nextIndex: 39 },
-                    { text: "Maybe just take one or two things? They won't notice that.", nextIndex: 42 },
-                    { text: "Let's close it properly and report it to the office.", nextIndex: 45 }
                 ]
             },
             {
                 speaker: "you",
-                text: "[grabbing snacks] Jackpot! These'll get us through Calculus! [stuffing pockets] I'm grabbing those limited edition Cheetos. They never restock those!",
+                text: "[grabbing snacks] These'll get us through Calculus! [stuffing pockets]",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "[grabbing snacks] Nice! I'm grabbing two of the large cookies. They never restock those!",
                 scene: "vending",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 1",
-                text: "[taking armfuls] This is what I call educational redistribution! I'm taking these as compensation for that F I got in biology.",
+                text: "[taking armfuls] I'm taking these as compensation for all the overpriced snacks I've bought here.",
                 scene: "vending",
                 choices: []
             },
@@ -424,6 +491,12 @@
                 choices: [
                     { text: "Continue", nextIndex: 48 }
                 ]
+            },
+            {
+                speaker: "you",
+                text: "Let's close it properly and report it to the office.",
+                scene: "vending",
+                choices: []
             },
             {
                 speaker: "Unnamed Student 1",
