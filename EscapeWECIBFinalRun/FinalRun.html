@@ -303,7 +303,7 @@
                 scene: "kween",
                 choices: [
                     { text: "What does this have to do with the speech?", nextIndex: 26 },
-                    { text: "So... you grew up in the suburbs?", nextIndex: 33 },
+                    { text: "So... you grew up in the suburbs?", nextIndex: 32 },
                     { text: "[say nothing]", nextIndex: 37 }
                 ]
             },{
@@ -361,7 +361,7 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "I was the only white girls around... There were only people of color.<br>My best friends. My community. My <strong>NEIGHBORS.</strong>",
+                text: "I was the only white girls around... There were only people<br>of color. My best friends. My community. My <strong>NEIGHBORS.</strong>",
                 scene: "kween",
                 choices: []
             },
@@ -385,7 +385,7 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "I may not be Black. But inside? I feel it. Deeply...<br>I am a black woman at heart.",
+                text: "I may not be Black. But inside? I feel it. Deeply...<br><strong>I am a black woman at heart.</strong>",
                 scene: "kween",
                 choices: []
             },
@@ -416,7 +416,7 @@
             {
                 speaker: "you",
                 text: "Alright..",
-                scene: "bee",
+                scene: "kween",
                 choices: []
             },
             
@@ -424,36 +424,36 @@
             {
                 speaker: "you",
                 text: "[Thinking] We didn't even get to hear the speach..",
-                scene: "bee",
+                scene: "vending",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
                 text: "Class was so strange today.. What was Ms.Kween on?",
-                scene: "kween",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 3",
-                text: "Probably her dad's marijuana LOL... Dude, check it out! [eyes widening]<br>The vending machine is open!",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "[rushing over] No way! Someone must have been refilling it.. Lets grab something!",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "Yeah! I'm going to take a thing or two. They won't notice..",
                 scene: "vending",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 3",
-                text: "[looking around nervously] I don't know, guys. There are cameras everywhere.",
+                text: "Probably her dad's marijuana LOL... Dude, check it out!<br>[eyes widening] The vending machine is open!",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "No way! Someone must have been refilling it.. Lets grab something!",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "I'm going to take a thing or two. They won't notice..",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 3",
+                text: "[looking around nervously] I don't know, guys.<br>There are cameras everywhere.",
                 scene: "vending",
                 choices: []
             },
@@ -1189,7 +1189,7 @@
                     });
                     choicesElement.appendChild(choiceButton);
                 });
-            }, 1300); // 1.3-second delay before showing choices
+            }, 1050); // 1.3-second delay before showing choices
         } else {
             // If no choices, clicking anywhere advances to the next dialogue
             // But prevent click event from being added multiple times
