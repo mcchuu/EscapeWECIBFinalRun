@@ -102,9 +102,9 @@
     }
 
     .choice-btn {
-        background-color: #333;
+        background-color: #9A9BAA;
         color: white;
-        border: 1px solid #555;
+        border: 1px solid #9A9BAA;
         padding: 8px 15px;
         border-radius: 5px;
         cursor: pointer;
@@ -113,6 +113,16 @@
 
     .choice-btn:hover {
         background-color: #444;
+    }
+
+    #originOfLife {
+        z-index: 5;
+        max-width: 40px;
+        position: absolute;
+        margin-top: 15.55%;
+        margin-left: 10.5%;
+        bottom: 0;
+        left: 0;
     }
 </style>
 <body>
@@ -124,8 +134,10 @@
             <img id="staircase" src="scene/staircase.png">
             <img id="hallway" src="scene/hallway.png">
             <img id="mcqueen" src="scene/mcqueen.png">
+            <img id="originOfLife" src="originOfLife.png">
+
         </div>
-        <img class="uidialogue" id="uidialogue" src="guiMcqueen.png">
+        <img class="uidialogue" id="uidialogue" src="gui.png">
         <div id="dialogueContainer">
             <!-- Add character portrait image -->
             <img id="characterPortrait" src="" alt="Character Portrait">
@@ -137,26 +149,37 @@
 
 <script>
     const scene = ["bee", "kween", "vending", "staircase", "hallway", "mcqueen"];
-    const speaker = ["you", "Ms. Bee", "Ms. Kween", "Mr. McQueen", "Unnamed Teacher 1", "Unnamed Student 2", "Unnamed Student 1", "Unnamed Student 2", "Unnamed Student 3", "Unnamed Student 4", "Unnamed Student 5", "Unnamed Student 6"]
+    const speaker = ["You", "Ms. Bee", "Ms. Kween", "Mr. McQueen", "Unnamed Teacher 1", "Unnamed Student 2", "Unnamed Student 1", "Unnamed Student 2", "Unnamed Student 3", "Unnamed Student 4", "Unnamed Student 5", "Unnamed Student 6"]
 
     const characterPortraits = {
-        "you": "character/player.png",
+        "You": "character/player.png",
         "Ms. Bee": "character/msBee.png",
         "Ms. Kween": "character/msKween.png",
         "Mr. McQueen": "character/mrmcqueen.png",
-        "Unnamed Teacher": "character/ut",
+        "Unnamed Teacher": "character/ut.png",
         "Unnamed Student 1": "character/us1.png",
         "Unnamed Student 2": "character/us2.png",
         "Unnamed Student 3": "character/us3.png",
         "Unnamed Student 4": "character/us4.png",
         "Unnamed Student 5": "character/us5.png",
         "Unnamed Student 6": "character/us6.png",
+        "Unnamed Student 7": "character/us7.png",
+        "Unnamed Student 8": "character/us8.png",
+        "Unnamed Student 9": "character/us9.png",
+        "Unnamed Student 10": "character/us10.png",
+        "Unnamed Student 11": "character/us11.png",
+        "Unnamed Student 12": "character/us12.png",
+        "Unnamed Student 13": "character/us13.png",
+        "Unnamed Student 14": "character/us14.png",
+        "Unnamed Student 15": "character/us15.png",
+
+
         };
     
     const dialogue = [
     {
                 speaker: "Ms. Bee",
-                text: "Welcome to python class!<br> Today we'll be showcasing everyone's final projects.",
+                text: "Welcome to Python class!<br> Today we'll be showcasing everyone's final projects.",
                 scene: "bee",
                 choices: []
             },
@@ -168,13 +191,7 @@
             },
             {
                 speaker: "none",
-                text: "an unnamed student intensely staring at you from <br>across the room.",
-                scene: "bee",
-                choices: []
-            },
-            {
-                speaker: "none",
-                text: "The staring continues for an uncomfortably long time.",
+                text: "An unnamed student intensely stares at you from<br>across the room for an uncomfortably long time...",
                 scene: "bee",
                 choices: []
             },
@@ -186,11 +203,11 @@
             },
             {
                 speaker: "Unnamed Student 1",
-                text: "Do you want to see my project… its important.",
+                text: "Do you want to see my project..? its important.",
                 scene: "bee",
                 choices: [
-                    { text: "Uh... okay?", nextIndex: 7 },
-                    { text: "Pretend not to hear and look at your phone", nextIndex: 6 },
+                    { text: "Uh... okay?", nextIndex: 92 }, // 7
+                    { text: "[pretend not to hear and look at your phone]", nextIndex: 5 },
                 ]
             },
             {
@@ -200,45 +217,36 @@
                 choices: [
                     { text: "Uh... okay?", nextIndex: 7 },
                 ]
-            },{
-            },
+            },{},
             {
-                speaker: "you",
+                speaker: "You",
                 text: "Uh... okay?",
                 scene: "bee",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 1",
-                text: "[excited] Okay, so I created something really nice!",
+                text: "[excited] Okay, so I created something really nice!<br>I call it \"The Origin of Life\". Get it?",
+                scene: "bee",
+                choices: []
+            },
+            {
+                speaker: "You",
+                text: "Is that suppose to be a...",
                 scene: "bee",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 1",
-                text: "[proud] I call it \"The Origin of Life.\" Get it?",
-                scene: "bee",
-                choices: []
-            },
-            {
-                speaker: "you",
-                text: "Is that...",
-                scene: "bee",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "Because we all come from... anyways, what do you think?",
+                text: "Because we all come from a... anyways, what do you think?",
                 scene: "bee",
                 choices: [
-                    { text: "I'm... not sure how to feel.", nextIndex: 13 },
-                    { text: "That's... certainly creative..", nextIndex: 15 },
+                    { text: "I'm... not sure how to feel.", nextIndex: 11 },
+                    { text: "That's... certainly creative.", nextIndex: 13 },
                 ]
-            },
+            },{},
             {
-            },
-            {
-                speaker: "you",
+                speaker: "You",
                 text: "I'm... not sure how to feel.",
                 scene: "bee",
                 choices: []
@@ -256,20 +264,33 @@
                 choices: []
             },
             {
-                speaker: "you",
-                text: "That's... certainly creative..",
+                speaker: "You",
+                text: "That's... certainly creative.",
+                scene: "bee",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 1",
+                text: "Thank you! I really tried my best to replicate it in ascii art :)",
                 scene: "bee",
                 choices: []
             },
             {
                 speaker: "Ms. Bee",
-                text: "Class is over! Have a good day everyone!",
+                text: "Class is over. Have a good day everyone!",
                 scene: "bee",
                 choices: []
             },
             {
+                speaker: "You",
+                text: "[thinking] I should probably get to my next class before she<br>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀shows me a different generated image...",
+                scene: "bee",
+                choices: [{ text: "[go to English class]", nextIndex: 19 },
+            ]
+            },{},
+            {
                 speaker: "Ms. Kween",
-                text: "[solemn] Today, we'll be exploring Sojourner Truth's<br>powerful speech \"Ain't I a Woman.\"",
+                text: "[solemn] Today, we'll be exploring Sojourner Truth's<br>powerful speech \"Ain't I a Woman\".",
                 scene: "kween",
                 choices: []
             },
@@ -287,13 +308,13 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "When I was younger, I grew up as trailor trash in<br>what you might call... \"the hood\".",
+                text: "When I was younger, I grew up in what you might call...<br><strong>\"The Hood\"</strong>.",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "my father used all the running water we had... [sobs]",
+                text: "my father used all the running water we had...",
                 scene: "kween",
                 choices: []
             },
@@ -303,32 +324,31 @@
                 scene: "kween",
                 choices: [
                     { text: "What does this have to do with the speech?", nextIndex: 26 },
-                    { text: "So... you grew up in the suburbs?", nextIndex: 32 },
-                    { text: "[say nothing]", nextIndex: 37 }
+                    { text: "So... you grew up in the suburbs?", nextIndex: 33 },
+                    { text: "[say nothing]", nextIndex: 38 }
                 ]
-            },{
-            },
+            },{},
             {
-                speaker: "you",
+                speaker: "You",
                 text: "Uh.. Ms. Kween, What does this have to do with the speech?",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "[offended] Everything! this has EVERYTHING to do with her speach!",
+                text: "[offended] Everything! This has <strong>EVERYTHING</strong> to do with her speach!",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "My struggle IS her struggle!",
+                text: "My struggle <strong>IS</strong> her struggle!",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "and if I was a slave I would be the first to be killed because I wouldn't take the disrespect!",
+                text: "And if I was a slave like her back then... I would be the first<br>to be killed, because I wouldn't take that disrespect!",
                 scene: "kween",
                 choices: []
             },
@@ -340,542 +360,379 @@
             },
             {
                 speaker: "Ms. Kween",
-                text: "so ain't I a woman too? A black woman at that?'",
+                text: "So ain't I a woman too? A black woman at that?",
                 scene: "kween",
                 choices: [
-                    { text: "Okay...", nextIndex: 36 },
+                    { text: "...What?", nextIndex: 37 },
                 ]
-            },{
-            },
+            },{},
             {
-                speaker: "you",
+                speaker: "You",
                 text: "So... you grew up in the suburbs?",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "[defensive] SUBURBS? I was TRAILOR TRASH<br>Don't invalidate my lived experience!",
+                text: "[defensive] SUBURBS? I was <strong>TRAILOR TRASH</strong><br>Don't invalidate my lived experience!",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "I was the only white girls around... There were only people<br>of color. My best friends. My community. My <strong>NEIGHBORS.</strong>",
+                text: "I was the only white girls around... There were only people<br>of color. My <strong>NEIGHBORS.</strong> My whole community.",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "When I was in high school, I turned to a Latina girl,<br>raised my fist, and said, \"I see you queen.\"",
+                text: "One time when I got on the bus, a Latina girl looked at me<br>in solidarity and said, \"I see you queen\". [raises fist]",
                 scene: "kween",
                 choices: []
             },
             {
-                speaker: "you",
-                text: "Okay...",
-                scene: "kween",
-                choices: []
-            },
-            {
-                speaker: "Ms. Kween",
-                text: "[sighs dramatically] Sometimes I think I was born in the wrong body. The wrong time. The wrong... pigmentation.",
+                speaker: "You",
+                text: "...What?",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "I may not be Black. But inside? I feel it. Deeply...<br><strong>I am a black woman at heart.</strong>",
+                text: "[sighs dramatically] Sometimes I think that I was born in the<br>wrong body. The wrong time. With the wrong... pigmentation.",
+                scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "Ms. Kween",
+                text: "Inside I feel it. Deeply...<br><strong>I am a black woman at heart.</strong>",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
-                text: "[under breath] Oh that's not...",
+                text: "Oh, that's not...",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 3",
-                text: "Ms. Kween, its 10:25 am...",
+                text: "Ms. Kween, its 10:25 am.",
                 scene: "kween",
                 choices: []
             },
             {
                 speaker: "Ms. Kween",
-                text: "Oh... Well class is dismissed.<br>Have a good lunch everyone!",
+                text: "Oh... Well class is dismissed. Have a good lunch everyone!",
                 scene: "kween",
+                choices: []
+            },
+            {
+                speaker: "You",
+                text: "[thinking] We didn't even get to hear the speach.",
+                scene: "vending",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
-                text: "Hey you.. lets go to the vending machine, I'm kinda hungry.",
+                text: "Hey.. let's go to the vending machine, I'm kinda hungry.",
                 scene: "kween",
-                choices: []
-            },
+                choices: []},
             {
-                speaker: "you",
-                text: "Alright..",
+                speaker: "You",
+                text: "Okay.",
                 scene: "kween",
-                choices: []
-            },
+                choices: [{ text: "[follow Unnamed Student 2 to vending machine]", nextIndex: 47 },
+            ]},{},
             
             // Scene 3: VENDING MACHINE INCIDENT
             {
-                speaker: "you",
-                text: "[Thinking] We didn't even get to hear the speach..",
+                speaker: "Unnamed Student 4",
+                text: "Class was so strange today.. What was Ms. Kween on?",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "Class was so strange today.. What was Ms.Kween on?",
+                speaker: "Unnamed Student 7",
+                text: "Probably her dad's marijuana LOL. Dude, check it out..<br>[eyes widening] The vending machine is open!",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 3",
-                text: "Probably her dad's marijuana LOL... Dude, check it out!<br>[eyes widening] The vending machine is open!",
+                speaker: "Unnamed Student 5",
+                text: "Hell yes! Someone must have been refilling it.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "No way! Someone must have been refilling it.. Lets grab something!",
+                speaker: "Unnamed Student 7",
+                text: "Let's take some snacks!",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "I'm going to take a thing or two. They won't notice..",
+                speaker: "Unnamed Student 6",
+                text: "I don't know, guys... There are cameras everywhere.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 3",
-                text: "[looking around nervously] I don't know, guys.<br>There are cameras everywhere.",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "[nudging player] What do you think?",
+                speaker: "Unnamed Student 6",
+                text: "[nudging you] What do you think?",
                 scene: "vending",
                 choices: [
-                    { text: "Let's take some snacks! The school's been robbing us for years!", nextIndex: 36 },
-                    { text: "I don't think we should steal... we could get in serious trouble.", nextIndex: 39 },
+                    { text: "Maybe grab a few? ", nextIndex: 60 },
+                    { text: "We could get in serious trouble.", nextIndex: 53 },
                 ]
-            },
+            },{},
             {
-                speaker: "you",
-                text: "[grabbing snacks] These'll get us through Calculus! [stuffing pockets]",
+                speaker: "You",
+                text: "Yeah... I don't think we should steal. We could get in serious trouble.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "[grabbing snacks] Nice! I'm grabbing two of the large cookies. They never restock those!",
+                speaker: "Unnamed Student 7",
+                text: "[already taking snacks] Fine, then just stand there.. we'll do it ourselves.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 1",
-                text: "[taking armfuls] I'm taking these as compensation for all the overpriced snacks I've bought here.",
+                speaker: "Unnamed Student 4",
+                text: "I'm grabbing two of the large cookies. They never restock those!",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "[grabbing more] Hurry up! I can hear someone coming!",
+                speaker: "Unnamed Student 6",
+                text: "Guys Hurry up! I can hear someone coming up the stairs!",
+                scene: "vending",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 7",
+                text: "Crap. Let's go",
                 scene: "vending",
                 choices: [
-                    { text: "Continue", nextIndex: 48 }
+                    { text: "[follow Unnamed Students to staircase]", nextIndex: 64 }
                 ]
             },
+            {},
             {
-                speaker: "you",
-                text: "Let's close it properly and report it to the office.",
+                speaker: "You",
+                text: "Maybe just grab one or two things? They probably won't<br>notice a couple items missing.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 1",
-                text: "[rolling eyes] Don't be such a goody-two-shoes! What are they gonna do, put \"snack thief\" on your permanent record? That'll really tank your Harvard application.",
+                speaker: "Unnamed Student 7",
+                text: "[stuffs backpack] Nice. I'm taking these as compensation<br>for all the overpriced snacks I've bought here.",
                 scene: "vending",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "Fine, we'll do it ourselves. You can be the lookout.",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "you",
-                text: "I'm not being a lookout for theft!",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 3",
-                text: "[already taking snacks] Then just stand there and look natural. Pretend you're texting or something.",
+                speaker: "Unnamed Student 5",
+                text: "Yeah! The school's been robbing us for years.",
                 scene: "vending",
                 choices: [
-                    { text: "Continue", nextIndex: 48 }
+                    { text: "[grab snacks]", nextIndex: 57 }
                 ]
-            },
-            {
-                speaker: "you",
-                text: "Maybe just grab one or two things? They probably won't notice a couple items missing.",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[nodding approvingly] I like your style. The art of moderation in crime. [takes a reasonable amount]",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "[already stuffing backpack] Speak for yourselves. I'm taking enough to open my own corner store!",
-                scene: "vending",
-                choices: [
-                    { text: "Continue", nextIndex: 48 }
-                ]
-            },
-            {
-                speaker: "you",
-                text: "We should close it properly and report it to the office. Stealing is wrong.",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[dramatic gasp] Did your moral compass just get an upgrade? Or did you forget to take your fun pills this morning?",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "[already taking snacks] Well, while you're busy being boring, I'm getting my tuition's worth in Twix bars.",
-                scene: "vending",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 3",
-                text: "[nervously] Guys, someone's coming! Scatter!",
-                scene: "vending",
-                choices: [
-                    { text: "Continue", nextIndex: 48 }
-                ]
-            },
+            },{},
             
             // Staircase confrontation
             {
-                speaker: "none",
-                text: "[Player walks downstairs, staff member approaches]",
+                speaker: "Unnamed Student 6",
+                text: "Oh no, it's Unnamed Teacher...",
                 scene: "staircase",
                 choices: []
             },
             {
                 speaker: "Unnamed Teacher",
-                text: "[aggressive, appearing suddenly like a horror movie jump scare] HEY YOU! FREEZE RIGHT THERE!",
+                text: "[aggressive] <strong>HEY!</strong> What are you kids doing on the third floor?",
                 scene: "staircase",
                 choices: []
             },
             {
                 speaker: "Unnamed Teacher",
-                text: "What are you doing on the third floor? Don't you know students aren't allowed up here during lunch? This is a RESTRICTED AREA!",
+                text: "Don't you know students aren't allowed loitering up here?",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 2",
+                text: "I'm sorry, We didn't know the rule.",
                 scene: "staircase",
                 choices: []
             },
             {
                 speaker: "Unnamed Teacher",
-                text: "[eyes narrowing] Did you not see the sign? The sign that clearly states \"NO STUDENTS DURING LUNCH PERIOD\" in Comic Sans size 12 font behind the potted plant?",
+                text: "[suspicious] Don't lie to me. you're clearly hiding something.",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 6",
+                text: "We were just..",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Teacher",
+                text: "and what is that bulge in your pocket?",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 4",
+                text: "That's just my..",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Teacher",
+                text: "<strong>EMPTY THEM RIGHT NOW!</strong> I've been a teacher for<br>TEN YEARS, I know contraband when I see it.",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Teacher",
+                text: "If you don't like something, change it. If you can't, change<br>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀your attitude towards it.",
                 scene: "staircase",
                 choices: [
-                    { text: "I was just heading downstairs...", nextIndex: 52 },
-                    { text: "There was no sign that I could see.", nextIndex: 52 },
-                    { text: "I'm sorry, I didn't know the rule.", nextIndex: 52 },
-                    { text: "I was looking for a teacher for help with my assignment.", nextIndex: 52 }
+                    { text: "I'm sorry, we thought it was free.", nextIndex: 75 },
+                    { text: "I didn't even take anything...", nextIndex: 78 },
+                    { text: "[say nothing]", nextIndex: 81 }
                 ]
-            },
+            },{},
             {
-                speaker: "Unnamed Teacher",
-                text: "LIKELY STORY! [suspicious, leaning uncomfortably close]",
+                speaker: "You",
+                text: "I'm sorry, we thought it was free.",
                 scene: "staircase",
                 choices: []
             },
             {
                 speaker: "Unnamed Teacher",
-                text: "What's that bulge in your pocket? EMPTY YOUR POCKETS RIGHT NOW! I've been working here for SEVENTEEN YEARS and I can SMELL contraband from a MILE away!",
-                scene: "staircase",
-                choices: []
-            },
-            
-            // Different outcomes based on previous choice
-            // For students who took many snacks
-            {
-                speaker: "Unnamed Teacher",
-                text: "[seeing snacks] I knew it! THIEF! PILLAGER! VENDING MACHINE PIRATE! This is going on your PERMANENT RECORD.",
-                scene: "staircase",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "Colleges will see this! Future employers will see this! Your GRANDCHILDREN will see this!",
-                scene: "staircase",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "[suddenly inspirational, staring into the middle distance] You know, when I was your age, I stood at a crossroads just like you.",
-                scene: "staircase",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "I could become a person who TAKES from the world, or one who GIVES. Today, you chose the path of TAKING. But tomorrow? Tomorrow could be your redemption story.",
-                scene: "staircase",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "The phoenix rises! The caterpillar becomes the butterfly! The vending machine... remains locked!",
+                text: "[scoffs] FREE? Nothing in life is free!",
                 scene: "staircase",
                 choices: [
-                    { text: "I'm really sorry. It was a mistake.", nextIndex: 59 },
-                    { text: "The machine was already open! I thought it was free!", nextIndex: 60 },
-                    { text: "Aren't you being a bit dramatic about some snacks?", nextIndex: 61 },
-                    { text: "[Say nothing and accept your fate]", nextIndex: 62 }
+                    { text: "[say nothing]", nextIndex: 81 }
                 ]
-            },
+            },{},
             {
-                speaker: "Unnamed Teacher",
-                text: "[still dramatic] Sorry doesn't refill the vending machine, does it? DOES IT? But I suppose it's a start. A tiny seedling of remorse in the garden of your conscience!",
-                scene: "staircase",
-                choices: [
-                    { text: "Continue", nextIndex: 63 }
-                ]
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "[scoffs] FREE? Nothing in life is free! Especially not in an educational institution! That's Lesson One in the School of Hard Knocks, which you just enrolled in!",
-                scene: "staircase",
-                choices: [
-                    { text: "Continue", nextIndex: 63 }
-                ]
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "[gasps] DRAMATIC? I am PROPORTIONAL! These snacks represent ORDER! SOCIETY! Without rules, we're just animals fighting over the last Snickers bar in the jungle of CHAOS!",
-                scene: "staircase",
-                choices: [
-                    { text: "Continue", nextIndex: 63 }
-                ]
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "[nods solemnly] Silence. The confession of the guilty. But at least you own it. That's something, I suppose.",
-                scene: "staircase",
-                choices: [
-                    { text: "Continue", nextIndex: 63 }
-                ]
-            },
-            {
-                speaker: "Unnamed Teacher",
-                text: "That'll be three days of in-school suspension. Let this be the wake-up call that TRANSFORMS YOUR LIFE.",
+                speaker: "You",
+                text: "I didn't even take anything...",
                 scene: "staircase",
                 choices: []
             },
             {
                 speaker: "Unnamed Teacher",
-                text: "In twenty years, you'll thank me. You'll say, \"That nameless staff member who caught me with Fun-Size Twix bars in my pocket CHANGED MY DESTINY.\"",
+                text: "Were you not still there? You are an accomplice.",
                 scene: "staircase",
                 choices: [
-                    { text: "Continue", nextIndex: 65 }
+                    { text: "[say nothing]", nextIndex: 81 }
                 ]
+            },{},
+            {
+                speaker: "Unnamed Teacher",
+                text: "[nods] Silence. The confession of the guilty.",
+                scene: "staircase",
+                choices: []
             },
+            {
+                speaker: "Unnamed Teacher",
+                text: "I'm marking you up and you ALL are getting <strong>ISS</strong> for this.",
+                scene: "staircase",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Teacher",
+                text: "Let this be a wake-up call. It will <strong>TRANSFORM YOUR LIVES.</strong>",
+                scene: "staircase",
+                choices: [
+                    { text: "[follow Unnamed Students to first floor]", nextIndex: 85}
+                ]
+            },{},
             
             // Scene 4: Hallway with friends after the incident
             {
-                speaker: "none",
-                text: "[Later, in hallway with friends]",
+                speaker: "Unnamed Student 2",
+                text: "[drained] My brain is so DEAD after having to listen to all her inspirational crap... I need <strong>coffee</strong>.",
+                scene: "hallway",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 6",
+                text: "We can go to the staff break room. They always have<br>fresh coffee and other good stuff.",
+                scene: "hallway",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 5",
+                text: "Didn't we JUST get in trouble? Like, 5 minutes ago?",
+                scene: "hallway",
+                choices: []
+            },
+            {
+                speaker: "Unnamed Student 5",
+                text: "Maybe you should just buy coffee from the vending machine.<br> I don't to get into any more trouble.",
                 scene: "hallway",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
-                text: "[looking drained] Man, I need caffeine. My brain is DEAD. That history lecture put me in a coma.",
+                text: "You want me to go to the same place I got an ISS for?<br>I'm already in trouble, so I'm going regardless...",
                 scene: "hallway",
                 choices: []
             },
             {
-                speaker: "Unnamed Student 1",
-                text: "[with suspicious energy] Let's check out the staff break room. They always have coffee. The GOOD stuff, not that cafeteria sludge that tastes like it was filtered through a gym sock.",
-                scene: "hallway",
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 3",
-                text: "Didn't we JUST get in trouble? Like, literally 20 minutes ago?",
+                speaker: "Unnamed Student 2",
+                text: "You can just stand there and be the look out or whatever. ",
                 scene: "hallway",
                 choices: [
-                    { text: "Are we allowed in there? I don't want more trouble.", nextIndex: 69 },
-                    { text: "I'm in! This day needs more adventure and caffeine!", nextIndex: 70 },
-                    { text: "Maybe we should just buy coffee from the cafeteria?", nextIndex: 71 },
-                    { text: "You guys go ahead. I'll meet you in class.", nextIndex: 72 }
+                    { text: "[wait by door]", nextIndex: 92}
                 ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[laughs] Is anyone \"allowed\" anywhere, really? That's just, like, a social construct, man. Did Columbus have PERMISSION to discover America? Did Edison have PERMISSION to invent the light bulb? Be a pioneer!",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 73 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[high fives you] THAT'S the spirit! Life's too short for bad coffee and following rules!",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 73 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[looks disgusted] That brown water they call coffee? It's probably 90% sadness and 10% expired creamer. Come on, live a little!",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 73 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[disappointed] Fine, abandon us in our hour of need. But don't come crying when we're all energized and you're falling asleep in calculus!",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 73 }
-                ]
-            },
-            
+            },{},
+
             // Staff Break Room
             {
                 speaker: "none",
-                text: "[Staff break room. Coffee pot in corner, fridge humming, cheesy motivational posters everywhere.]",
-                scene: "hallway", // Using hallway scene as placeholder
-                choices: []
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[peeking in] Coast is clear! Operation Caffeine Liberation is a go! [gestures dramatically] Grab a mug, quickly!",
-                scene: "hallway",
-                choices: [
-                    { text: "[Take a mug that says \"World's Best Teacher\"]", nextIndex: 75 },
-                    { text: "[Take a plain white mug to be less conspicuous]", nextIndex: 76 },
-                    { text: "[Take the largest mug available]", nextIndex: 77 },
-                    { text: "[Hesitate] \"I don't know about this...\"", nextIndex: 78 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "Ooh, going for the irony. Bold choice! Nothing says \"I'm stealing your coffee\" like drinking from a mug celebrating the profession you're undermining.",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 79 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "Smart thinking. The art of criminal camouflage. Like a coffee ninja.",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 79 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "Go big or go home! I like your ambition! Why sip when you can gulp?",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 79 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 1",
-                text: "[rolls eyes] Come ON! Live dangerously! What's the worst that could happen? Detention? Expulsion? A lifetime ban from all future staff break rooms across America?",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 79 }
-                ]
-            },
-            {
-                speaker: "none",
-                text: "[Player takes a mug and pours coffee. Friend 2 starts opening the refrigerator.]",
+                text: "After a few minutes, Unnamed Students leave the break room<br>with a few coffee mugs and protein drinks",
                 scene: "hallway",
                 choices: []
             },
             {
                 speaker: "Unnamed Student 2",
-                text: "[wide-eyed] Holy protein paradise! Look at this stash! [pulls out fancy protein drinks]",
+                text: "[hands mug] Here, I got you one.",
                 scene: "hallway",
-                choices: [
-                    { text: "What are you doing? We came for coffee, not theft!", nextIndex: 81 },
-                    { text: "Grab me one of those too!", nextIndex: 82 },
-                    { text: "Be careful, someone might come in.", nextIndex: 83 },
-                    { text: "[Look around nervously for security cameras]", nextIndex: 84 }
-                ]
+                choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "[stuffing protein drinks in backpack] Bro, do you know how expensive these are? Like eight bucks each at the store! The school can afford it. This is just redistributing educational resources! Robin Hood with a protein fixation!",
+                speaker: "Unnamed Student 5",
+                text: "Thanks...",
                 scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 85 }
-                ]
+                choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "[tosses you one] A person of culture! Try this one - it's grasshopper-infused vanilla. Ms. Henderson is on some weird protein kick. Tastes like drinking a smoothie made in a garden shed, but it's PREMIUM.",
+                speaker: "Unnamed Student 5",
+                text: "We should probably get to class now, I saw<br><strong>Mr.McQueen</strong> come in.",
                 scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 85 }
-                ]
+                choices: []
             },
             {
-                speaker: "Unnamed Student 2",
-                text: "[continues grabbing drinks] Relax! Teachers are all in a meeting about how to make standardized tests even more standardized. We've got at least 10 minutes before anyone needs emergency caffeine.",
+                speaker: "Unnamed Student 6",
+                text: "He's here? Let's go!",
                 scene: "hallway",
                 choices: [
-                    { text: "Continue", nextIndex: 85 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 2",
-                text: "[laughs] Cameras? In a school that can't even fix the hole in the gym ceiling? They still use OVERHEAD PROJECTORS in some classrooms! The most advanced technology in this building is Mr. Burnett's pacemaker.",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 85 }
-                ]
-            },
-            {
-                speaker: "Unnamed Student 3",
-                text: "[excited] Guys! They have REAL snacks in here!",
-                scene: "hallway",
-                choices: [
-                    { text: "Continue", nextIndex: 86 }
-                ]
-            },
+                    { text: "[follow Unnamed Students to computer room]", nextIndex: 85}
+                ]},
             
             // Scene 5: MR. MCQUEEN'S NOS 110 NETWORKING CLASS
             {
                 speaker: "none",
                 text: "[Classroom, player sits down with stolen coffee mug]",
                 scene: "mcqueen",
-                choices: []
-            },
+                choices: [
+                    { text: "Continue", nextIndex: 85 }
+                ]            },
             {
                 speaker: "Mr. McQueen",
                 text: "[monotone] Alright everyone, please open your online textbooks to Chapter 7: WiFi Cable Attributes.",
@@ -1128,102 +985,110 @@
                 speaker: "Safety Coordinator",
                 text: "[after video ends] Now, I'm passing out these forms. Please fill them out honestly."}];
 
-    let currentDialogueIndex = 0;
-    let clickEventActive = false;
+                let currentDialogueIndex = 0;
+                let clickEventActive = false;
 
-    // Function to display the current dialogue
-    function displayDialogue() {
-        const currentDialogue = dialogue[currentDialogueIndex];
-        
-        // Hide all scene images first
-        scene.forEach(sceneName => {
-            document.getElementById(sceneName).style.display = 'none';
-        });
-        
-        // Show only the current scene image
-        if (currentDialogue.scene) {
-            const sceneElement = document.getElementById(currentDialogue.scene);
-            if (sceneElement) {
-                sceneElement.style.display = 'block';
-            }
-        }
-        
-        // Display speaker name and character portrait
-        const speakerElement = document.getElementById('speakerName');
-        const portraitElement = document.getElementById('characterPortrait');
-        
-        if (currentDialogue.speaker === "none") {
-            speakerElement.style.display = 'none';
-            portraitElement.style.display = 'none';
-        } else {
-            speakerElement.style.display = 'block';
-            speakerElement.textContent = currentDialogue.speaker;
-            
-            // Display character portrait if available
-            if (characterPortraits[currentDialogue.speaker]) {
-                portraitElement.src = characterPortraits[currentDialogue.speaker];
-                portraitElement.style.display = 'block';
-            } else {
-                // Use a default portrait or hide if no portrait is available
-                portraitElement.style.display = 'none';
-            }
-        }
-        
-        // Display dialogue text
-        document.getElementById('dialogueText').innerHTML = currentDialogue.text;
-        
-        // Clear previous choices
-        const choicesElement = document.getElementById('choices');
-        choicesElement.innerHTML = '';
-        
-        // Display choices with a 1-second delay if any
-        if (currentDialogue.choices && currentDialogue.choices.length > 0) {
-            setTimeout(() => {
-                currentDialogue.choices.forEach(choice => {
-                    const choiceButton = document.createElement('button');
-                    choiceButton.className = 'choice-btn';
-                    choiceButton.textContent = choice.text;
-                    choiceButton.addEventListener('click', () => {
-                        currentDialogueIndex = choice.nextIndex;
-                        displayDialogue();
+                // Function to display the current dialogue
+                function displayDialogue() {
+                    const currentDialogue = dialogue[currentDialogueIndex];
+                    
+                    // Hide all scene images first
+                    scene.forEach(sceneName => {
+                        document.getElementById(sceneName).style.display = 'none';
                     });
-                    choicesElement.appendChild(choiceButton);
+                    
+                    // Show only the current scene image
+                    if (currentDialogue.scene) {
+                        const sceneElement = document.getElementById(currentDialogue.scene);
+                        if (sceneElement) {
+                            sceneElement.style.display = 'block';
+                        }
+                    }
+                    
+                    // Display the Origin of Life image when dialogue index is greater than 8
+                    const originOfLifeImage = document.getElementById('originOfLife');
+                    if (currentDialogueIndex > 7 && currentDialogueIndex < 19) {
+                        originOfLifeImage.style.display = 'block';
+                    } else {
+                        originOfLifeImage.style.display = 'none';
+                    }
+                    
+                    // Display speaker name and character portrait
+                    const speakerElement = document.getElementById('speakerName');
+                    const portraitElement = document.getElementById('characterPortrait');
+                    
+                    if (currentDialogue.speaker === "none") {
+                        speakerElement.style.display = 'none';
+                        portraitElement.style.display = 'none';
+                    } else {
+                        speakerElement.style.display = 'block';
+                        speakerElement.textContent = currentDialogue.speaker;
+                        
+                        // Display character portrait if available
+                        if (characterPortraits[currentDialogue.speaker]) {
+                            portraitElement.src = characterPortraits[currentDialogue.speaker];
+                            portraitElement.style.display = 'block';
+                        } else {
+                            // Use a default portrait or hide if no portrait is available
+                            portraitElement.style.display = 'none';
+                        }
+                    }
+                    
+                    // Display dialogue text
+                    document.getElementById('dialogueText').innerHTML = currentDialogue.text;
+                    
+                    // Clear previous choices
+                    const choicesElement = document.getElementById('choices');
+                    choicesElement.innerHTML = '';
+                    
+                    // Display choices with a 1-second delay if any
+                    if (currentDialogue.choices && currentDialogue.choices.length > 0) {
+                        setTimeout(() => {
+                            currentDialogue.choices.forEach(choice => {
+                                const choiceButton = document.createElement('button');
+                                choiceButton.className = 'choice-btn';
+                                choiceButton.textContent = choice.text;
+                                choiceButton.addEventListener('click', () => {
+                                    currentDialogueIndex = choice.nextIndex;
+                                    displayDialogue();
+                                });
+                                choicesElement.appendChild(choiceButton);
+                            });
+                        }, 1050); // 1.05-second delay before showing choices
+                    } else {
+                        // If no choices, clicking anywhere advances to the next dialogue
+                        // But prevent click event from being added multiple times
+                        if (!clickEventActive) {
+                            clickEventActive = true;
+                            document.addEventListener('click', advanceDialogue, { once: true });
+                        }
+                    }
+                }
+
+                // Function to advance to the next dialogue if there are no choices
+                function advanceDialogue() {
+                    // Reset click event flag
+                    clickEventActive = false;
+                    
+                    // Only advance if there are no choices in the current dialogue
+                    const currentDialogue = dialogue[currentDialogueIndex];
+                    if (!currentDialogue.choices || currentDialogue.choices.length === 0) {
+                        if (currentDialogueIndex < dialogue.length - 1) {
+                            currentDialogueIndex++;
+                            displayDialogue();
+                        }
+                    }
+                }
+
+                // Initialize the game
+                window.addEventListener('load', function() {
+                    // Create placeholder image elements for preloading character portraits
+                    for (const character in characterPortraits) {
+                        const img = new Image();
+                        img.src = characterPortraits[character];
+                    }
+                    displayDialogue();
                 });
-            }, 1050); // 1.3-second delay before showing choices
-        } else {
-            // If no choices, clicking anywhere advances to the next dialogue
-            // But prevent click event from being added multiple times
-            if (!clickEventActive) {
-                clickEventActive = true;
-                document.addEventListener('click', advanceDialogue, { once: true });
-            }
-        }
-    }
-    
-    // Function to advance to the next dialogue if there are no choices
-    function advanceDialogue() {
-        // Reset click event flag
-        clickEventActive = false;
-        
-        // Only advance if there are no choices in the current dialogue
-        const currentDialogue = dialogue[currentDialogueIndex];
-        if (!currentDialogue.choices || currentDialogue.choices.length === 0) {
-            if (currentDialogueIndex < dialogue.length - 1) {
-                currentDialogueIndex++;
-                displayDialogue();
-            }
-        }
-    }
-    
-    // Initialize the game
-    window.addEventListener('load', function() {
-        // Create placeholder image elements for preloading character portraits
-        for (const character in characterPortraits) {
-            const img = new Image();
-            img.src = characterPortraits[character];
-        }
-        displayDialogue();
-    });
 </script>
 </body>
 </html>
